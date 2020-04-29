@@ -73,11 +73,9 @@ const CovidDashboard = () => {
 
   const onAutoPlay = () => {
     setAutoPlay(!autoPlay);
-    console.log("[INFO}:::: onAutoPlay -> autoPlay", autoPlay);
   };
 
   useEffect(() => {
-    console.log("[INFO}:::: CovidDashboard -> autoPlay", autoPlay);
     if (autoPlay) {
       const newInterval = setInterval(increaseSeekValue(), 2000);
       setIntervalPlay(newInterval);
@@ -85,7 +83,6 @@ const CovidDashboard = () => {
         clearInterval(newInterval);
       };
     } else {
-      console.log("[INFO}:::: CovidDashboard -> autoPlay else", autoPlay);
       return () => {
         clearInterval(intervalPlay);
         setIntervalPlay(null);
