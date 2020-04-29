@@ -85,6 +85,7 @@ const CovidDashboard = () => {
         clearInterval(newInterval);
       };
     } else {
+      console.log("[INFO}:::: CovidDashboard -> autoPlay else", autoPlay);
       return () => {
         clearInterval(intervalPlay);
         setIntervalPlay(null);
