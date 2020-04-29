@@ -36,3 +36,84 @@
     transform: rotate(360deg);
   }
 }
+
+#patient-info {
+  height: 250px;
+  background: white;
+}
+
+#patient-info > h6 {
+  text-align: center;
+  height: 30px;
+  width: 100%;
+  padding: 5px;
+}
+
+#patient-info > div {
+  text-align: left;
+  background: rgb(238, 238, 238);
+  height: 210px;
+  width: 100%;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+.list-row {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.list-group {
+  background: white;
+  height: 350px;
+  width: 100%;
+}
+
+.list-group > h6 {
+  height: 30px;
+  width: 100%;
+  padding: 5px;
+}
+
+#list-component {
+  background: rgb(238, 238, 238);
+}
+
+.info-box {
+  background: white;
+  border: 1px solid #ccc;
+  padding: 5px;
+  width: 100px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+h5 {
+  text-align: center;
+  padding: 5px;
+}
+
+.rail {
+  height: 10px !important;
+}
+
+.track {
+  height: 10px !important;
+}
+
+.value-label {
+  top: -80px !important;
+}
+
+.MuiSlider-thumb {
+  width: 18px !important;
+  height: 18px !important;
+  margin-left: -10px !important;
+}
+
+.value-label > span:first-child {
+  width: 75px;
+  height: 75px;
+}
