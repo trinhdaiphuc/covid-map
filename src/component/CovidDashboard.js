@@ -44,6 +44,7 @@ const CovidDashboard = () => {
   const zoom = currentPatient ? 12 : 6;
 
   const patientClickedHandler = (patient, index) => {
+    setAutoPlay(false);
     setCurrentPatient(patient);
     setCurrentPatientIndex(index);
   };
@@ -88,7 +89,7 @@ const CovidDashboard = () => {
   }, [valueSeekBar]);
 
   useEffect(() => {
-    const url = "https://maps.vnpost.vn/apps/covid19/api/patientapi/list";
+    const url = "https://cors-anywhere.herokuapp.com/https://maps.vnpost.vn/apps/covid19/api/patientapi/list";
     fetch(url)
       .then((res) => res.json())
       .then((result) => {
