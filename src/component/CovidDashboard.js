@@ -7,9 +7,6 @@ import Container from "react-bootstrap/Container";
 import PatientList from "./PatientList";
 import SeekBar from "./SeekBar";
 import moment from "moment";
-import PlayArrowIcon from "@material-ui/icons/PlayArrow";
-import PauseIcon from "@material-ui/icons/Pause";
-import IconButton from "@material-ui/core/IconButton";
 
 const fromDate = new Date("12/8/2019");
 const toDate = new Date();
@@ -39,7 +36,6 @@ const CovidDashboard = () => {
   const [defaultPatients, setDefaultPatients] = useState([]);
   const [valueSeekBar, setValueSeekBar] = useState(0);
   const [autoPlay, setAutoPlay] = useState(false);
-  const [intervalPlay, setIntervalPlay] = useState(null);
   const defaultCenter = { lat: 16.047079, lng: 108.20623 };
 
   const currentCenter = currentPatient
@@ -77,18 +73,12 @@ const CovidDashboard = () => {
 
   useEffect(() => {
     if (autoPlay) {
-      const newInterval = setInterval(increaseSeekValue(), 2000);
-      setIntervalPlay(newInterval);
+      const newInterval = setInterval(increaseSeekValue, 500);
       return () => {
         clearInterval(newInterval);
       };
-    } else {
-      return () => {
-        clearInterval(intervalPlay);
-        setIntervalPlay(null);
-      };
     }
-  }, [autoPlay, increaseSeekValue, intervalPlay]);
+  }, [autoPlay, increaseSeekValue]);
 
   useEffect(() => {
     if (valueSeekBar > maxValue) {
@@ -148,26 +138,15 @@ const CovidDashboard = () => {
           </Row>
         </Col>
       </Row>
-      <Row>
-        <Col xs={2}>
-          <IconButton onClick={() => onAutoPlay()}>
-            {autoPlay ? (
-              <PauseIcon ></PauseIcon>
-            ) : (
-              <PlayArrowIcon ></PlayArrowIcon>
-            )}
-          </IconButton>
-        </Col>
-        <Col xs={10}>
-          <SeekBar
-            fromDate={fromDate}
-            toDate={toDate}
-            value={valueSeekBar}
-            maxValue={maxValue}
-            onChange={onChangeSeekBarHandler}
-          />
-        </Col>
-      </Row>
+      <SeekBar
+        fromDate={fromDate}
+        toDate={toDate}
+        value={valueSeekBar}
+        maxValue={maxValue}
+        onChange={onChangeSeekBarHandler}
+        onAutoPlay={onAutoPlay}
+        autoPlay={autoPlay}
+      />
     </Container>
   );
 };
