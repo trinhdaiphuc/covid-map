@@ -23,9 +23,7 @@ const compare = (a, b) => {
 };
 
 const getPatientsBeforeDate = (patients, date) => {
-  const newPatients = patients.filter(
-    (patient) => date.diff(patient.verifyDate, "days") > 0
-  );
+  const newPatients = patients.filter((patient) => date.diff(patient.verifyDate, "days") > 0);
   return newPatients;
 };
 
@@ -89,66 +87,67 @@ const CovidDashboard = () => {
   }, [valueSeekBar]);
 
   useEffect(() => {
-    const url = "https://cors-anywhere.herokuapp.com/https://maps.vnpost.vn/apps/covid19/api/patientapi/list";
+    const url =
+      "https://cors-anywhere.herokuapp.com/https://maps.vnpost.vn/apps/covid19/api/patientapi/list";
     fetch(url)
       .then((res) => res.json())
       .then((result) => {
         const sortPatientsList = result.data.sort(compare);
         setDefaultPatients(sortPatientsList);
-        const getPatients = getPatientsBeforeDate(
-          sortPatientsList,
-          moment(fromDate)
-        );
+        const getPatients = getPatientsBeforeDate(sortPatientsList, moment(fromDate));
         setPatients(getPatients);
       });
   }, []);
 
   return (
-    <Container>
-      <Row>
-        <Col xs={8}>
-          <CovidGoogleMap
-            onPatientMarkerClicked={patientClickedHandler}
-            center={currentCenter}
-            patients={patients}
-            zoom={zoom}
-            currentPatientIndex={currentPatientIndex}
-          />
-        </Col>
-
-        <Col xs={4}>
-          <Row id="patient-info">
-            <h6>Thông tin bệnh nhân</h6>
-            <div>
-              {currentPatient && (
-                <PatientInfo
-                  name={currentPatient.name}
-                  address={currentPatient.address}
-                  note={currentPatient.note}
-                  verifyDate={currentPatient.verifyDate}
-                />
-              )}
-            </div>
-          </Row>
-          <Row>
-            <PatientList
+    <div id="covid-dashboard">
+      <h5>THÔNG TIN ĐIỂM ĐẾN CỦA CÁC CA DƯƠNG TÍNH VỚI SARS-CoV-2</h5>
+      <Container>
+        <Row>
+          <Col xs={8}>
+            <CovidGoogleMap
+              onPatientMarkerClicked={patientClickedHandler}
+              center={currentCenter}
               patients={patients}
-              onPatientListClicked={patientClickedHandler}
+              zoom={zoom}
               currentPatientIndex={currentPatientIndex}
             />
-          </Row>
-        </Col>
-      </Row>
-      <SeekBar
-        fromDate={fromDate}
-        toDate={toDate}
-        value={valueSeekBar}
-        maxValue={maxValue}
-        onChange={onChangeSeekBarHandler}
-        onAutoPlay={onAutoPlay}
-        autoPlay={autoPlay}
-      />
-    </Container>
+          </Col>
+
+          <Col xs={4}>
+            <Row id="patient-info">
+              <h6>Thông tin bệnh nhân</h6>
+              <div>
+                {currentPatient && (
+                  <PatientInfo
+                    name={currentPatient.name}
+                    address={currentPatient.address}
+                    note={currentPatient.note}
+                    verifyDate={currentPatient.verifyDate}
+                  />
+                )}
+              </div>
+            </Row>
+            <Row>
+              <PatientList
+                patients={patients}
+                onPatientListClicked={patientClickedHandler}
+                currentPatientIndex={currentPatientIndex}
+              />
+            </Row>
+          </Col>
+        </Row>
+        <SeekBar
+          fromDate={fromDate}
+          toDate={toDate}
+          value={valueSeekBar}
+          maxValue={maxValue}
+          onChange={onChangeSeekBarHandler}
+          onAutoPlay={onAutoPlay}
+          autoPlay={autoPlay}
+        />
+      </Container>
+    </div>
   );
 };
 

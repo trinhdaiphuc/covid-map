@@ -3,13 +3,16 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
+import { BrowserRouter } from "react-router-dom";
+require("./mocks");
 
 ReactDOM.render(
   <React.StrictMode>
-    <h5>THÔNG TIN ĐIỂM ĐẾN CỦA CÁC CA DƯƠNG TÍNH VỚI SARS-CoV-2</h5>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </React.StrictMode>,
-  document.getElementById("root")
+  document.getElementById("root"),
 );
 
 // If you want your app to work offline and load faster, you can change
