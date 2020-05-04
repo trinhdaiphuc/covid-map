@@ -20,11 +20,11 @@ function App() {
           <Navigation />
           <CovidDashboard />
         </Route>
-        <Route component={NoMatch}></Route>
         <Route exact path="/">
           <Navigation />
           <CovidDashboard />
         </Route>
+        <Route component={NoMatch}></Route>
       </Switch>
     </div>
   );
