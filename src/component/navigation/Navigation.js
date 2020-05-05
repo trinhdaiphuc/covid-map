@@ -12,16 +12,7 @@ const Navigation = () => {
   }, [selectedNav]);
   return (
     <Container>
-      <Nav
-        justify
-        variant="tabs"
-        activeKey={selectedNav}
-        onSelect={(selectedKey) => {
-          console.log("[INFO]:::: Navigation -> selectedKey", selectedKey);
-
-          return onClickHandler(selectedKey);
-        }}
-      >
+      <Nav justify variant="tabs" defaultActiveKey={selectedNav}>
         <Nav.Item>
           <Nav.Link href="/map">Bản đồ Việt Nam</Nav.Link>
         </Nav.Item>
