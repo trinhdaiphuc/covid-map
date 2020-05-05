@@ -13,7 +13,7 @@ import IconButton from "@material-ui/core/IconButton";
 const useStyles = makeStyles({
   root: {
     width: "100%",
-    padding: "10px",
+    padding: "60px 0px 0px 0px",
   },
 });
 
@@ -47,10 +47,10 @@ const SeekBar = ({
         <Col xs={2}>
           <IconButton onClick={() => onAutoPlay()}>
             {autoPlay ? (
-              <PauseIcon style={{ fontSize: 50, color: "#3F51B5" }}></PauseIcon>
+              <PauseIcon style={{ fontSize: 80, color: "#3F51B5" }}></PauseIcon>
             ) : (
               <PlayArrowIcon
-                style={{ fontSize: 50, color: "#3F51B5" }}
+                style={{ fontSize: 80, color: "#3F51B5" }}
               ></PlayArrowIcon>
             )}
           </IconButton>

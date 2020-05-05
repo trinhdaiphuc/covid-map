@@ -20,7 +20,7 @@ const formatDataGlobal = (data) => {
     return {
       date: key,
       Nhiễm: data[key][0],
-      Mắc: data[key][1],
+      "Tử vong": data[key][1],
       "Bình phục": data[key][2],
     };
   });
@@ -55,21 +55,24 @@ const StatsDashboard = () => {
   }, []);
   return (
     <div id="covid-stats">
-      <h5>
-        Biểu đồ thống kê số ca mắc, nghi nhiễm, bình phục, nhiễm của Việt Nam và
-        thế giới
-      </h5>
-      <Row>
-        <Col xs={6}>
-          <StatsVN data={statsVN} stroke={[stroke1, stroke2, stroke3]} />
-        </Col>
-        <Col xs={6}>
-          <StatsGlobal
-            data={statsGlobal}
-            stroke={[stroke1, stroke2, stroke3]}
-          />
-        </Col>
-      </Row>
+      <Container fluid>
+        <h5>
+          Biểu đồ thống kê số ca mắc, nghi nhiễm, bình phục, tử vong của Việt
+          Nam và thế giới
+        </h5>
+
+        <Row>
+          <Col xs={6}>
+            <StatsVN data={statsVN} stroke={[stroke1, stroke2, stroke3]} />
+          </Col>
+          <Col xs={6}>
+            <StatsGlobal
+              data={statsGlobal}
+              stroke={[stroke1, stroke2, stroke3]}
+            />
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 };

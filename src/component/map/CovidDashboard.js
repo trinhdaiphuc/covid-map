@@ -23,7 +23,9 @@ const compare = (a, b) => {
 };
 
 const getPatientsBeforeDate = (patients, date) => {
-  const newPatients = patients.filter((patient) => date.diff(patient.verifyDate, "days") > 0);
+  const newPatients = patients.filter(
+    (patient) => date.diff(patient.verifyDate, "days") > 0
+  );
   return newPatients;
 };
 
@@ -94,7 +96,10 @@ const CovidDashboard = () => {
       .then((result) => {
         const sortPatientsList = result.data.sort(compare);
         setDefaultPatients(sortPatientsList);
-        const getPatients = getPatientsBeforeDate(sortPatientsList, moment(fromDate));
+        const getPatients = getPatientsBeforeDate(
+          sortPatientsList,
+          moment(fromDate)
+        );
         setPatients(getPatients);
       });
   }, []);
@@ -102,7 +107,7 @@ const CovidDashboard = () => {
   return (
     <div id="covid-dashboard">
       <h5>THÔNG TIN ĐIỂM ĐẾN CỦA CÁC CA DƯƠNG TÍNH VỚI SARS-CoV-2</h5>
-      <Container>
+      <Container fluid>
         <Row>
           <Col xs={8}>
             <CovidGoogleMap
@@ -137,6 +142,7 @@ const CovidDashboard = () => {
             </Row>
           </Col>
         </Row>
+
         <SeekBar
           fromDate={fromDate}
           toDate={toDate}

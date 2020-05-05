@@ -117,3 +117,41 @@ h5 {
   width: 75px;
   height: 75px;
 }
+
+#covid-stats,
+h6 {
+  margin: 20px 0px;
+}
+
+.stats {
+  border: 1px solid #ccc;
+  margin: 20px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  background-color: #eceff1;
+}
+
+.navbar__link {
+  margin: 20px;
+  font-size: 30px;
+  cursor: pointer;
+  text-decoration: none;
+  letter-spacing: 0.3em;
+  text-indent: 0.3em;
+  color: #181818;
+  border-bottom: 3px solid transparent;
+}
+
+.navbar__link:hover {
+  transform: translateY(-2px);
+}
+
+.navbar__link--active {
+  border-bottom: 3px solid #29b6f6;
+  transition: border-bottom 0.5s ease-in-out;
+}

@@ -8,20 +8,11 @@ import { Switch, Route } from "react-router-dom";
 function App() {
   return (
     <div className="App">
+      <Navigation />
       <Switch>
-        <Route exact path="/map">
-          <Navigation />
-          <CovidDashboard />
-        </Route>
-        <Route exact path="/stats">
-          <Navigation />
-          <StatsDashboard />
-        </Route>
-        <Route path="/">
-          <Navigation />
-          <CovidDashboard />
-        </Route>
-        {/* <Route component={NoMatch}></Route> */}
+        <Route exact path="/map" component={CovidDashboard} />
+        <Route exact path="/stats" component={StatsDashboard} />
+        <Route path="/" component={CovidDashboard} />
       </Switch>
     </div>
   );
